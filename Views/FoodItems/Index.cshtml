@@ -1,0 +1,68 @@
+﻿@@model IEnumerable<WebApplication3.Models.FoodItem>
+
+    <h2>Danh sách món ăn</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+        <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+}
+
+    <a asp-action="Create" class="btn btn-primary mb-3">➕ Thêm món</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ảnh</th>
+                <th>Tên</th>
+                <th>Giá</th>
+                <th>Mô tả</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@item.ImageUrl" style="height:80px;" /></td>
+                    <td>@item.Name</td>
+                    <td>@item.Price.ToString("N0") đ</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">✏️</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">🗑️</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<style>
+    .table-food {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        background-color: #ffffff;
+    }
+
+        .table-food th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .table-food td {
+            text-align: center;
+            vertical-align: middle;
+            background-color: #f8f9fa;
+        }
+
+        .table-food tr:hover {
+            background-color: #e0f0ff;
+            transition: 0.3s;
+        }
+
+    .btn-action {
+        margin: 0 5px;
+    }
+</style>

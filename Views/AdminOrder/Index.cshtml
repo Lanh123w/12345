@@ -1,0 +1,19 @@
+﻿@foreach (var order in Model)
+{
+    <div class="card mb-3">
+        <div class="card-header bg-dark text-white">
+            🧾 Đơn hàng #@order.Id - @order.CustomerName
+            <span class="float-end">📅 @(order.OrderDate?.ToShortDateString() ?? "Chưa có ngày")</span>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                @foreach (var detail in order.OrderDetails)
+                {
+                    <li class="list-group-item">
+                        🍽 @detail.FoodItem.Name — SL: @detail.Quantity — Giá: @detail.UnitPrice.ToString("N0") VND
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

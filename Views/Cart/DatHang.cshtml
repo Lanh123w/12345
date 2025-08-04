@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Đặt hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="section-title">📍 Nhập địa chỉ giao hàng</h2>
+
+    <form asp-action="Checkout" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="Address">Địa chỉ</label>
+            <input name="Address" class="form-control" placeholder="Nhập địa chỉ..." required />
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">✅ Đặt hàng</button>
+    </form>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger mt-3">
+            @TempData["Error"]
+        </div>
+    }
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-info mt-3">
+            @TempData["Message"]
+        </div>
+    }
+</div>

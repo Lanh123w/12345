@@ -1,0 +1,449 @@
+﻿/* =============================== */
+/* 🌈 1. Root Variables & Colors  */
+/* =============================== */
+h2 {
+    color: #07f9d2;
+}
+
+select {
+    color: #ed1515; /* màu chữ trắng */
+    background-color: #007bff; /* nền xanh dương */
+    font-weight: bold;
+}
+.btn-danger {
+    background-color: #ff4d4d;
+    border: 2px solid #ff9999;
+    box-shadow: 0 0 10px rgba(255,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+    .btn-danger:hover {
+        background-color: #ff6666;
+        box-shadow: 0 0 15px rgba(255,0,0,0.6);
+        transform: scale(1.05);
+    }
+
+label {
+    color: #0df8cd; /* đổi thành màu bạn muốn, ví dụ màu cam */
+}
+
+    label[for="Phone"] {
+        color: #009688;
+    }
+.discount-code {
+    background-color: #222;
+    color: #00ffcc;
+    border: 2px dashed #00ffcc;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,255,200,0.3);
+    cursor: pointer;
+}
+
+    .discount-code:hover {
+        background-color: #00ffcc;
+        color: #000;
+        transform: scale(1.05) rotate(-1deg);
+        box-shadow: 0 0 20px rgba(0,255,200,0.6);
+    }
+
+:root {
+    --nebula-1: rgba(0, 123, 255, 0.2); /* Xanh dương nhạt */
+    --nebula-2: rgba(173, 216, 230, 0.3); /* LightBlue */
+    --nebula-3: rgba(0, 255, 200, 0.2); /* Cyan xanh ngọc */
+    --nebula-4: rgba(144, 238, 144, 0.3); /* LightGreen */
+    --nebula-5: rgba(50, 205, 50, 0.2); /* LimeGreen */
+}
+
+
+/* =============================== */
+/* 🌌 2. Background & Visual Nebula */
+/* =============================== */
+#cosmic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #3c3f6e, #1f1f3a);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.nebula {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--nebula-color), transparent 70%);
+    filter: blur(100px);
+    animation: floatNebula 30s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+/* 📱 Mobile nebula nhỏ hơn */
+@media (max-width: 768px) {
+    .nebula {
+        width: 250px;
+        height: 250px;
+        filter: blur(70px);
+    }
+}
+
+/* =============================== */
+/* 🌠 3. Shooting Stars & Animations */
+/* =============================== */
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, white, transparent);
+    opacity: 0.8;
+    transform: rotate(45deg);
+    animation: fallStar linear infinite;
+    animation-duration: 3s;
+    pointer-events: none;
+}
+
+/* =============================== */
+/* ⚡ 4. Interaction Effects       */
+/* =============================== */
+.cosmic-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.3), transparent);
+    animation: flashPulse 0.5s ease-out;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.cosmic-glow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    background: radial-gradient(circle, rgba(0,255,255,0.25), transparent 60%);
+    border-radius: 20px;
+    filter: blur(15px);
+    pointer-events: none;
+    animation: glowFade 1s ease-out;
+    z-index: 0;
+}
+
+/* =============================== */
+/* 🍽️ 5. Cards & Menu Glow Effects */
+/* =============================== */
+.card.cosmic-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+    .card.cosmic-item:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 25px rgba(0,255,255,0.5), 0 0 45px rgba(255,150,255,0.3), 0 0 80px rgba(150,255,255,0.2);
+        filter: brightness(1.15);
+        z-index: 5;
+    }
+
+.btn-aurora {
+    box-shadow: 0 0 10px rgba(0,255,100,0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+    .btn-aurora:hover {
+        box-shadow: 0 0 20px rgba(0,255,100,0.8);
+    }
+
+.btn-order {
+    background-color: #00cc99;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #00ffcc;
+    box-shadow: 0 0 10px #00ffcc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+    .btn-order:hover {
+        background-color: #00ffcc;
+        color: #000;
+        box-shadow: 0 0 15px #00ffcc;
+        transform: scale(1.05);
+    }
+
+.section-title,
+.menu-title {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0,255,255,0.8), 0 0 20px rgba(255,150,255,0.6);
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+    .menu-title::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);
+        z-index: -1;
+        filter: blur(10px);
+    }
+
+/* =============================== */
+/* 🌐 6. Navbar & Title Effects   */
+/* =============================== */
+.navbar.bg-dark {
+    background-color: rgba(15,15,15,0.95) !important;
+    box-shadow: 0 0 20px rgba(0,255,200,0.4);
+}
+
+.navbar .nav-link {
+    color: rgba(0,255,255,0.6) !important;
+    font-weight: bold;
+    text-shadow: 0 0 4px rgba(0,255,255,0.3);
+    transition: color 0.3s ease;
+}
+
+.navbar {
+    font-size: 18px; /* mặc định thường là 14px */
+}
+
+    .navbar .nav-link:hover {
+        color: #80ffea !important;
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+
+/* 🛸 Glitch Logo */
+.glitch-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00ccff, #00ffcc, #aaffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glowTitle 5s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 0 6px rgba(0,255,255,0.6), 0 0 20px rgba(0,255,200,0.5), 0 0 30px rgba(150,255,255,0.4);
+}
+
+    .glitch-title::before,
+    .glitch-title::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        animation: glitchWave 2.5s infinite linear alternate-reverse;
+        opacity: 0.6;
+    }
+
+    .glitch-title::before {
+        left: 2px;
+        color: #00ffe0;
+        clip-path: polygon(0 0, 100% 0, 100% 25%, 0 25%);
+    }
+
+    .glitch-title::after {
+        left: -2px;
+        color: #00f0ff;
+        clip-path: polygon(0 75%, 100% 75%, 100% 100%, 0 100%);
+    }
+/* Nền tổng thể của bảng */
+.food-table {
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    /* Header bảng */
+    .food-table thead th {
+        background-color: #343a40;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-bottom: 2px solid #444;
+    }
+
+    /* Dòng dữ liệu */
+    .food-table tbody tr {
+        background-color: #ffffff;
+        transition: background-color 0.3s ease;
+    }
+
+        /* Hiệu ứng hover */
+        .food-table tbody tr:hover {
+            background-color: #e6f7ff;
+        }
+
+    /* Padding và căn chỉnh */
+    .food-table td {
+        padding: 12px;
+        vertical-align: middle;
+    }
+
+    /* Màu chữ theo loại dữ liệu */
+    .food-table .text-primary {
+        color: #007bff;
+    }
+
+    .food-table .text-success {
+        color: #28a745;
+        font-weight: 600;
+    }
+
+    .food-table .text-muted {
+        color: #6c757d;
+    }
+
+/* Ảnh món ăn */
+.img-thumbnail {
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    background-color: #f8f9fa;
+}
+
+
+/* =============================== */
+/* 🎞️ 7. Keyframe Animations     */
+/* =============================== */
+@keyframes floatNebula {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+
+    100% {
+        transform: translate(80px, 50px) scale(1.2);
+    }
+}
+
+@keyframes fallStar {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-400px, 800px);
+        opacity: 0;
+    }
+}
+
+@keyframes flashPulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+@keyframes glowFade {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+@keyframes glitchWave {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(3px);
+    }
+
+    100% {
+        transform: translateX(-3px);
+    }
+}
+
+@keyframes glowTitle {
+    0%,100% {
+        text-shadow: 0 0 6px rgba(0,255,255,0.6), 0 0 20px rgba(0,255,200,0.5), 0 0 30px rgba(150,255,255,0.4);
+    }
+
+    50% {
+        text-shadow: 0 0 10px rgba(0,255,255,0.9), 0 0 25px rgba(0,255,200,0.8), 0 0 40px rgba(150,255,255,0.6);
+    }
+}
+@keyframes toastSlide {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.toast {
+    animation: toastSlide 0.5s ease-out;
+}
+@media (max-width: 768px) {
+    .card.cosmic-item:hover {
+        transform: scale(1.03);
+    }
+}
+@keyframes cartShake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.cart-shake {
+    animation: cartShake 0.6s ease-in-out;
+}

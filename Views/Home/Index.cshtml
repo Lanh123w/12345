@@ -1,0 +1,106 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userName = SignInManager.IsSignedIn(User) ? UserManager.GetUserName(User) : null;
+}
+
+<div class="container mt-5">
+    <!-- 🌟 Banner chào mừng -->
+    <div class="text-center mb-5">
+        <h1 class="section-title display-5 glitch-title" data-text="Đặt Là Có Ăn là Ghiền">
+            🍽 Đặt Là Có Ăn là Ghiền
+        </h1>
+        <p class="lead text-light">Thế giới ẩm thực trong tầm tay bạn. Đặt là có ăn, ăn là ghiền!</p>
+    </div>
+
+    <!-- 👤 Người dùng -->
+    @if (userName != null)
+    {
+        <div class="alert alert-success text-center">
+            👋 Xin chào, <strong>@userName</strong>! Rất vui được phục vụ bạn.
+        </div>
+
+        <div class="d-flex justify-content-center flex-wrap gap-3 mb-5">
+            <a class="btn btn-primary btn-lg" asp-controller="FoodItems" asp-action="Categories">🍱 Xem món ăn</a>
+            <a class="btn btn-success btn-lg" asp-controller="Cart" asp-action="Index">🛒 Giỏ hàng của bạn</a>
+            <a class="btn btn-warning btn-lg" asp-controller="Cart" asp-action="MyOrder">📦 Đơn hàng đã đặt</a>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            Bạn chưa đăng nhập. Hãy đăng nhập để đặt món và theo dõi đơn hàng nhé!
+        </div>
+
+        <div class="d-flex justify-content-center gap-3 mb-5">
+            <a class="btn btn-outline-primary btn-lg" asp-controller="Account" asp-action="Login">🔐 Đăng nhập</a>
+            <a class="btn btn-outline-secondary btn-lg" asp-controller="Account" asp-action="Register">📝 Đăng ký</a>
+        </div>
+    }
+
+    <!-- 🍽 Gợi ý danh mục -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4 mb-3">
+            <div class="card cosmic-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🍜 Món nước</h5>
+                    <p class="card-text">Phở, bún bò, mì cay... nóng hổi vừa thổi vừa ăn!</p>
+                    <a asp-controller="FoodItems" asp-action="Categories" class="btn btn-outline-light">Khám phá</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card cosmic-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🍗 Món chiên</h5>
+                    <p class="card-text">Gà rán, khoai tây, nem chua... giòn tan hấp dẫn!</p>
+                    <a asp-controller="FoodItems" asp-action="Categories" class="btn btn-outline-light">Khám phá</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card cosmic-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🍰 Tráng miệng</h5>
+                    <p class="card-text">Chè, bánh flan, kem tươi... ngọt ngào mát lạnh!</p>
+                    <a asp-controller="FoodItems" asp-action="Categories" class="btn btn-outline-light">Khám phá</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔧 Thông tin ứng dụng -->
+    <div class="text-center text-light mt-5">
+        <hr />
+        <p>
+            Ứng dụng được xây dựng bằng <strong>ASP.NET Core MVC</strong> ❤️<br />
+            Giao diện cosmic độc đáo, trải nghiệm mượt mà!
+        </p>
+    </div>
+</div>
+
+<!-- 🎨 CSS bổ sung -->
+<style>
+    .cosmic-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: #fff;
+        transition: transform 0.3s ease;
+    }
+
+        .cosmic-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+    .glitch-title {
+        font-family: 'Orbitron', sans-serif;
+        color: #fff;
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    }
+</style>

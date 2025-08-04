@@ -1,0 +1,55 @@
+﻿@using WebApplication3.Controllers
+@model LoginViewModel
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="section-title">Đăng nhập</h2>
+
+<form asp-action="Login" method="post">
+    <div>
+        <label class="section-title">Email</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label class="section-title">Mật khẩu</label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <!-- ✅ Thêm liên kết "Quên mật khẩu?" -->
+    <div style="margin-bottom: 10px;color: blue; background: border-box bottom 20px ">
+        <a asp-action="ForgotPassword" asp-controller="Account">Quên mật khẩu?</a>
+    </div>
+
+    <div>
+        <input asp-for="RememberMe" type="checkbox" />
+        <label asp-for="RememberMe">Ghi nhớ đăng nhập</label>
+    </div>
+    <button type="submit">Đăng nhập</button>
+</form>
+
+<form asp-controller="Account" asp-action="ExternalLogin" method="post">
+    <input type="hidden" name="provider" value="Google" />
+    <input type="hidden" name="returnUrl" value="~/" />
+    <button type="submit" class="btn btn-danger">Đăng nhập bằng Google</button>
+</form>
+
+
+
+<div>
+    <a asp-action="Register">Chưa có tài khoản? Đăng ký</a>
+</div>
+<div class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-3" id="login-toast" role="alert">
+    <div class="d-flex">
+        <div class="toast-body">Đăng nhập thành công!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
