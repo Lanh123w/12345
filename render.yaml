@@ -4,8 +4,6 @@ services:
     runtime: docker
     repo: https://github.com/Lanh123w/WEBDOAN
     branch: main
-    buildCommand: dotnet publish WEBDOAN.csproj -c Release -o ./publish
-    startCommand: dotnet ./publish/WEBDOAN.dll
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
