@@ -1,7 +1,7 @@
 services:
   - type: web
     name: WEBDOAN
-    runtime: dotnet
+    runtime: dorker
     repo: https://github.com/Lanh123w/WEBDOAN
     branch: main
     buildCommand: dotnet publish WEBDOAN.csproj -c Release -o ./publish
